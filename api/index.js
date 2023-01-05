@@ -9,23 +9,12 @@ const { sendKafkaMessage } = require('../connectors/kafka');
 const { validateTicketReservationDto } = require('../validation/reservation');
 const messagesType = require('../constants/messages');
 const { startKafkaProducer } = require('../connectors/kafka');
+const cors = require("cors");
 
 // Config setup to parse JSON payloads from HTTP POST request body
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  if (req.method === "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
-    return res.status(200).json({});
-  }
-  next();
-});
+app.use(cors());
 
 // Register the api routes
 // HTTP endpoint to test health performance of service
