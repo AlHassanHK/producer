@@ -14,24 +14,16 @@ const cors = require("cors");
 // Config setup to parse JSON payloads from HTTP POST request body
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-// app.use(cors());
+app.use(cors());
 
 // Register the api routes
 // HTTP endpoint to test health performance of service
-app.post("/api/test", async(req, res)=>{
-  return res.send(req.body);
-})
-app.get("/getMethodTest", async(req, res)=>{
-  return res.send("Hello from /getMethodTest");
-})
 app.get('/api/health', async (req, res) => {
   return res.send('Service Health');
 });
 
 // HTTP endpoint to create new user
-
-
-app.post('/kafka/:type', async (req, res) => {
+app.post('/api/:type', async (req, res) => {
   const type = req.params.type.toLocaleLowerCase();
   try {
     // validate payload before proceeding with reservations
