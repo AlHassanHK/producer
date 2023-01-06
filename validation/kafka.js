@@ -14,6 +14,7 @@ const kafkaMessageValidation = {
       }).unknown(false),
       body: Joi.object().keys({
         matchNumber: Joi.number().required(),
+        id: Joi.number().strict(),
         tickets,
       }).unknown(false),
     }).required();
