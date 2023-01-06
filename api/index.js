@@ -14,7 +14,7 @@ const cors = require("cors");
 // Config setup to parse JSON payloads from HTTP POST request body
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
+// app.use(cors());
 
 // Register the api routes
 // HTTP endpoint to test health performance of service
