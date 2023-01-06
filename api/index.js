@@ -25,7 +25,9 @@ app.get('/api/health', async (req, res) => {
 // HTTP endpoint to create new user
 
 
-
+app.post("/test", async(req, res)=>{
+  res.send(req.body);
+})
 app.post('/kafka/:type', async (req, res) => {
   const type = req.params.type.toLocaleLowerCase();
   try {
