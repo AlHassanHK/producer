@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Register the api routes
 // HTTP endpoint to test health performance of service
-app.post("/test", async(req, res)=>{
+app.post("/api/test", async(req, res)=>{
   return res.send(req.body);
 })
 app.get("/getMethodTest", async(req, res)=>{
