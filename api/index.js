@@ -34,10 +34,12 @@ app.post('/kafka/:type', async (req, res) => {
     if (validationError) {
       return res.status(403).send(validationError.message);
     }
+
     if (type === "pending") {
       await sendKafkaMessage(messagesType.TICKET_PENDING, {
         meta: { action: messagesType.TICKET_PENDING },
         body: {
+        //   id: 123,
           matchNumber: req.body.matchNumber,
           tickets: req.body.tickets,
         }
@@ -68,7 +70,7 @@ app.post('/kafka/:type', async (req, res) => {
       message: 'Ticket Purchase Successful',
     });
   } catch (e) {
-    return res.status(400).send(e.message);
+    return res.status(400).send(e);
   }
 });
 

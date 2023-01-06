@@ -9,6 +9,7 @@ const reservationValidation = {
   validateTicketReservationDto(reservation) {
     const schema = Joi.object().keys({
       matchNumber: Joi.number().strict().required(),
+      id: Joi.number().strict(),
       tickets,
     }).required().unknown(false);
     return schema.validate(reservation).error;
