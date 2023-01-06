@@ -18,6 +18,12 @@ app.use(express.urlencoded({ extended: false }));
 
 // Register the api routes
 // HTTP endpoint to test health performance of service
+app.post("/test", async(req, res)=>{
+  res.send(req.body);
+})
+app.get("/getMethodTest", async(req, res)=>{
+  res.send("Hello from /getMethodTest");
+})
 app.get('/api/health', async (req, res) => {
   return res.send('Service Health');
 });
@@ -25,9 +31,6 @@ app.get('/api/health', async (req, res) => {
 // HTTP endpoint to create new user
 
 
-app.post("/test", async(req, res)=>{
-  res.send(req.body);
-})
 app.post('/kafka/:type', async (req, res) => {
   const type = req.params.type.toLocaleLowerCase();
   try {
@@ -79,9 +82,9 @@ app.post('/kafka/:type', async (req, res) => {
 });
 
 // If request doesn't match any of the above routes then return 404
-app.use((req, res, next) => {
-  return res.status(404).send();
-});
+// app.use((req, res, next) => {
+//   return res.status(404).send();
+// });
 
 // Create HTTP Server and Listen for Requests
 app.listen(3009, async (req, res) => {
