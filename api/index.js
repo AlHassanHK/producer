@@ -36,7 +36,7 @@ app.post('/api/:type', async (req, res) => {
       await sendKafkaMessage(messagesType.TICKET_PENDING, {
         meta: { action: messagesType.TICKET_PENDING },
         body: {
-          id: 141592,
+        //   id: 141592,
           matchNumber: req.body.matchNumber,
           tickets: req.body.tickets,
         }
