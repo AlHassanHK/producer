@@ -39,7 +39,7 @@ app.post('/kafka/:type', async (req, res) => {
       await sendKafkaMessage(messagesType.TICKET_PENDING, {
         meta: { action: messagesType.TICKET_PENDING },
         body: {
-        //   id: 123,
+          id: 141592,
           matchNumber: req.body.matchNumber,
           tickets: req.body.tickets,
         }
@@ -49,6 +49,7 @@ app.post('/kafka/:type', async (req, res) => {
       await sendKafkaMessage(messagesType.TICKET_RESERVED, {
         meta: { action: messagesType.TICKET_RESERVED },
         body: {
+        //   id: 141592,
           matchNumber: req.body.matchNumber,
           tickets: req.body.tickets,
         }
@@ -58,6 +59,7 @@ app.post('/kafka/:type', async (req, res) => {
       await sendKafkaMessage(messagesType.TICKET_CANCELLED, {
         meta: { action: messagesType.TICKET_CANCELLED },
         body: {
+        //   id: 141592,
           matchNumber: req.body.matchNumber,
           tickets: req.body.tickets,
         }
